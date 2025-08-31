@@ -1,6 +1,6 @@
 {
   "name": "youtube-music-app",
-  "version": "1.0",
+  "version": "1.0.0",
   "description": "A simple desktop wrapper for YouTube Music.",
   "main": "main.js",
   "scripts": {
