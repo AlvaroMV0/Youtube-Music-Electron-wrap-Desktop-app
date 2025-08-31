@@ -11,11 +11,6 @@ This application is for users who want the standard YouTube Music experience in 
 
 This is **not a custom client**. It is a direct wrapper for the official YouTube Music website (music.youtube.com) and does not add any other features like ad-blocking, custom themes, or equalization. The goal is to be as minimal and lightweight as possible.
 
-### Preview
-
-*(A screenshot showing the app running alongside a Discord profile with Rich Presence)*
-
-
 
 ### Features
 
