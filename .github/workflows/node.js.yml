@@ -1,0 +1,42 @@
+# This workflow builds and packages the Electron app for Windows, macOS, and Linux
+
+name: Build Electron App
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    # We will run this job on all three major operating systems
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        # Use a specific Node.js version
+        node-version: [20.x]
+
+    steps:
+    - name: Check out Git repository
+      uses: actions/checkout@v4
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Build the application
+      # This command will use electron-builder to create the package
+      run: npm run build
+
+    - name: Upload Artifact
+      # This step uploads the packaged application so you can download it
+      uses: actions/upload-artifact@v4
+      with:
+        name: my-app-${{ matrix.os }}
+        path: dist/ # The folder where electron-builder places the output
