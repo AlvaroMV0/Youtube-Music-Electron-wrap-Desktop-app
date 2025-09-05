@@ -3,30 +3,35 @@ const { FuseV1Options, FuseVersion } = require('@electron/fuses');
 
 module.exports = {
   packagerConfig: {
+    icon: 'src/youtube_music.ico',
     asar: true,
   },
   rebuildConfig: {},
   makers: [
     {
-      name: '@electron-forge/maker-squirrel',
-      config: {},
+      name: '@electron-forge/maker-squirrel', // Windows installer
+      config: {
+        setupIcon: 'src/youtube_music.ico', 
+        createDesktopShortcut: true,
+        createStartMenuShortcut: true,
+      },
     },
     {
-      name: '@electron-forge/maker-zip',
+      name: '@electron-forge/maker-zip', // macOS zip
       platforms: ['darwin'],
     },
     {
-      name: '@electron-forge/maker-deb',
+      name: '@electron-forge/maker-deb', // Debian package
       config: {},
     },
     {
-      name: '@electron-forge/maker-rpm',
+      name: '@electron-forge/maker-rpm', // Red Hat package
       config: {},
     },
   ],
   plugins: [
     {
-      name: '@electron-forge/plugin-auto-unpack-natives',
+      name: '@electron-forge/plugin-auto-unpack-natives', // Automatically unpacks native modules
       config: {},
     },
     // Fuses are used to enable/disable various Electron functionality
